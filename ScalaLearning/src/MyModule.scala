@@ -22,6 +22,7 @@ object MyModule {
   }
 
 
+  // EXERCISE 2.1
   def fibonacci(n: Int):Int ={
     @tailrec
     def go(n: Int, value1: Int, value2: Int): Int = {
@@ -31,10 +32,50 @@ object MyModule {
     go(n,0,1)
   }
 
+  def formatResult(name: String, n: Int, f: Int=>Long) = {
+    val msg = "The %s of %d is %d"
+    msg.format(name,n,f(n))
+  }
+
+  def findFirst[A](as: Array[A], p: A=>Boolean) : Int = {
+    def loop(n: Int): Int ={
+      if(n>=as.length) -1
+      else if (p(as(n))) n
+      else loop(n+1)
+    }
+    loop(0)
+  }
+
+  // EXERCISE 2.2
+  def isSorted[A](as: Array[A], ordered: (A,A) => Boolean): Boolean = {
+    def loop(n: Int): Boolean ={
+      if(n>=as.length) true
+      else if (!ordered(as(n-1),as(n))) false
+      else loop(n+1)
+    }
+    loop(1)
+  }
+
+  def intComparator(x:Int, y:Int) : Boolean ={
+    y>x
+  }
+
   def main(args: Array[String]): Unit = {
     println(formatAbs(-42))
     println(MyModule abs -7)
+
     println(factorial(7))
     println(fibonacci(9))
+
+    println(formatResult("absolute value",9,abs))
+    println(formatResult("factorial",8,factorial))
+    println(formatResult("fibonacci",9,fibonacci))
+
+    println(findFirst(Array(7,9,13), (x:Int) => x==9))
+    println(findFirst(Array("A","B","CDE"), (x:String) => x=="CDE"))
+
+    // EXERCISE 2.2
+    val arr = Array(1,2,3,4,5,6,7)
+    println("is sorted: "+isSorted(arr,intComparator))
   }
 }
