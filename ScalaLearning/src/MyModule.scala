@@ -56,9 +56,21 @@ object MyModule {
     loop(1)
   }
 
-  def intComparator(x:Int, y:Int) : Boolean ={
-    y>x
+  //EXERCISE 2.3 (preparation)
+  def partial1[A,B,C] (a: A,f: (A,B) => C): B =>C ={
+    (b: B) => f(a,b)
   }
+
+  //EXERCISE 2.3
+  /*
+  Let’s look at another example, currying, which converts a function f of two arguments
+  into a function of one argument that partially applies f . Here again there’s only one
+  implementation that compiles. Write this implementation.
+   */
+  def curry[A,B,C](f: (A,B) => C): A => (B => C) = {
+
+  }
+
 
   def main(args: Array[String]): Unit = {
     println(formatAbs(-42))
@@ -74,8 +86,13 @@ object MyModule {
     println(findFirst(Array(7,9,13), (x:Int) => x==9))
     println(findFirst(Array("A","B","CDE"), (x:String) => x=="CDE"))
 
-    // EXERCISE 2.2
+    // EXERCISE 2.2 (preparation)
     val arr = Array(1,2,3,4,5,6,7)
-    println("is sorted: "+isSorted(arr,intComparator))
+    println("is sorted: "+isSorted(arr,(x:Int, y:Int) => y>x))
+
+    //EXERCISE 2.3
+    val c = partial1(35, (a: Int, b: Int) => a+b)
+    val d = c(5)
+    println(d)
   }
 }
