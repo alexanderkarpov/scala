@@ -1,5 +1,9 @@
 package fpinscala.datastructures
 
+/**
+ * Singly linked list
+ * @tparam A
+ */
 sealed trait List[+A] //A trait is an abstract interface
 // that may optionally contain implementations of some methods.
 //Adding sealed in front means that all implementations of the trait
@@ -10,21 +14,27 @@ sealed trait List[+A] //A trait is an abstract interface
 //take.
 case object Nil extends List[Nothing]
 case class Cons[+A](head: A, tail: List[A]) extends List[A]
+// [+A] - the + indicates that the type parameter A is covariant
+// (for all types X and Y, if X is a subtype of Y, then List[X]
+// is a subtype of List[Y])
 
 /**
- * Singly linked list
+ * companion object to List
  */
 object List {
 
   def sum(ints: List[Int]): Int = ints match {
     case Nil => 0
     case Cons(x,xs) => x + sum(xs)
+      //If multiple patterns match the target,
+      // Scala chooses the first matching case.
   }
 
   def product(ds: List[Double]): Double = ds match {
     case Nil => 1.0
-    case Cons(0.0, _) => 0.0
+    case Cons(0.0, _) => 0.0 //the product of any list starting with 0.0 is 0.0
     case Cons(x,xs) => x * product(xs)
+
   }
 
   def apply[A](as: A*): List[A] = {
@@ -32,9 +42,12 @@ object List {
     else Cons(as.head, apply(as.tail: _*))
   }
 
-  def main(args: Array[String]): Unit = {
-    val ex1: List[Double] = Nil
-
-  }
+//  def main(args: Array[String]): Unit ={
+//    val ex1: List[Double] = Nil
+//    val ex2: List[Int] = Cons(1, Nil)
+//    val ex3: List[String] = Cons("a", Cons("b", Nil))
+//
+//
+//  }
 
 }

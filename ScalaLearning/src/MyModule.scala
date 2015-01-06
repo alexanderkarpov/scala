@@ -1,3 +1,5 @@
+import fpinscala.datastructures.Cons
+
 import scala.annotation.tailrec
 
 object MyModule {
@@ -104,5 +106,9 @@ object MyModule {
     val c = partial1(35, (a: Int, b: Int) => a+b)
     val d = c(5)
     println(d)
+
+    val e = partial1(35.5, (a: Double, b: Double) => a/b)
+    val f = e(25.2)
+    println(f)
   }
 }
