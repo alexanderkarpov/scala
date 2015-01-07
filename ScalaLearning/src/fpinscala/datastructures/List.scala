@@ -86,4 +86,40 @@ object List {
       else drop(xs, n-1)
   }
 
+  /**
+   * EXERCISE 3.5
+   * Implement dropWhile , which removes elements from the List prefix as long as
+   * they match a predicate.
+   * @param l list
+   * @param f match function
+   * @tparam A list element type
+   * @return result list
+   */
+  def dropWhile[A](l: List[A], f: A => Boolean): List[A] = l match{
+    case Nil => Nil
+    case Cons(h,t) if f(h) => dropWhile(t,f)
+    case _ => l
+
+  }
+
+
+  def append[A](a1: List[A], a2: List[A]): List[A] = a1 match {
+    case Nil => a2
+    case Cons(h,t) => Cons(h,append(t,a2))
+  }
+
+  /**
+   * EXERCISE 3.6
+   * Returns a List consisting of all but the last element of a List .
+   * So, given List(1,2,3,4), init will return List(1,2,3)
+   * @param l given list
+   * @tparam A list element type
+   * @return a List consisting of all but the last element of a given List
+   */
+  def init[A] (l: List[A]): List[A] = l match {
+    case Nil => sys.error("init of empty list")
+    case Cons(_,Nil) => Nil
+    case Cons(h,t) => Cons(h,init(t))
+  }
+
 }

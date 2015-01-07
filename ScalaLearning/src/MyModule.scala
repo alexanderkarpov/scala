@@ -23,7 +23,6 @@ object MyModule {
     go(n, 1)
   }
 
-
   // EXERCISE 2.1
   def fibonacci(n: Int):Int ={
     @tailrec
@@ -110,5 +109,9 @@ object MyModule {
     val e = partial1(35.5, (a: Double, b: Double) => a/b)
     val f = e(25.2)
     println(f)
+
+    val list = fpinscala.datastructures.List.apply("A","B","C","D","E","F",
+      "G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z")
+    println(fpinscala.datastructures.List.drop(list,15))
   }
 }
