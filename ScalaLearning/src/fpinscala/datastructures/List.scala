@@ -37,6 +37,7 @@ object List {
 
   }
 
+  //List.apply("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z")
   def apply[A](as: A*): List[A] = {
     if (as.isEmpty) Nil
     else Cons(as.head, apply(as.tail: _*))
@@ -68,12 +69,21 @@ object List {
     case Cons(x,xs) => Cons(nv,xs)
   }
 
-//  def main(args: Array[String]): Unit ={
-//    val ex1: List[Double] = Nil
-//    val ex2: List[Int] = Cons(1, Nil)
-//    val ex3: List[String] = Cons("a", Cons("b", Nil))
-//
-//
-//  }
+  /**
+   * EXERCISE 3.4
+   * Generalize tail to the function drop , which removes the first n elements from a list.
+   * Note that this function takes time proportional only to the number of elements being
+   * dropped — we don’t need to make a copy of the entire List .
+   * @param l list
+   * @param n number of elements to drop
+   * @tparam A list element type
+   * @return the list without n first elements
+   */
+  def drop[A](l:List[A], n: Int): List[A] = l match {
+    case Nil => Nil
+    case Cons(x,xs) =>
+      if (n<=0) l
+      else drop(xs, n-1)
+  }
 
 }
