@@ -1,5 +1,4 @@
-import fpinscala.datastructures.Cons
-
+import fpinscala.datastructures.List
 import scala.annotation.tailrec
 
 object MyModule {
@@ -110,13 +109,13 @@ object MyModule {
     val f = e(25.2)
     println(f)
 
-    val list = fpinscala.datastructures.List.apply("A","B","C","D","E","F",
+    val list = List.apply("A","B","C","D","E","F",
       "G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z")
-    println(fpinscala.datastructures.List.drop(list,15))
+    println(List.drop(list,15))
 
 
-    val xs: fpinscala.datastructures.List[Int] = fpinscala.datastructures.List(1,2,3,4,5,4,3,2,1)
-    val ex1 = fpinscala.datastructures.List.dropWhile(xs)(x => x < 4)
+    val xs: List[Int] = List(1,2,3,4,5,4,3,2,1)
+    val ex1 = List.dropWhile(xs)(x => x < 4)
     println(ex1)
   }
 }
