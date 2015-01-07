@@ -2,7 +2,7 @@ package fpinscala.datastructures
 
 /**
  * Singly linked list
- * @tparam A
+ * @tparam A list element type
  */
 sealed trait List[+A] //A trait is an abstract interface
 // that may optionally contain implementations of some methods.
@@ -45,13 +45,27 @@ object List {
   /**
    * EXERCISE 3.2
    * Implement the function tail for removing the first element of a List .
-   * @param as
-   * @tparam A
-   * @return
+   * @param as list
+   * @tparam A list element type
+   * @return tail of the list
    */
   def tail[A](as: List[A]): List[A] = as match {
     case Nil => Nil
     case Cons(x,xs) => xs
+  }
+
+  /**
+   * EXERCISE 3.3
+   * Using the same idea, implement the function setHead for replacing the first element
+   * of a List with a different value.
+   * @param as list
+   * @param nv new value
+   * @tparam A list element type
+   * @return the list with replaced first element
+   */
+  def setHead[A](as: List[A], nv: A): List[A] = as match {
+    case Nil => Nil
+    case Cons(x,xs) => Cons(nv,xs)
   }
 
 //  def main(args: Array[String]): Unit ={
