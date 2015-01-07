@@ -42,6 +42,18 @@ object List {
     else Cons(as.head, apply(as.tail: _*))
   }
 
+  /**
+   * EXERCISE 3.2
+   * Implement the function tail for removing the first element of a List .
+   * @param as
+   * @tparam A
+   * @return
+   */
+  def tail[A](as: List[A]): List[A] = as match {
+    case Nil => Nil
+    case Cons(x,xs) => xs
+  }
+
 //  def main(args: Array[String]): Unit ={
 //    val ex1: List[Double] = Nil
 //    val ex2: List[Int] = Cons(1, Nil)
