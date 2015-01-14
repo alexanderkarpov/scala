@@ -26,8 +26,6 @@ object List {
   def sum(ints: List[Int]): Int = ints match {
     case Nil => 0
     case Cons(x,xs) => x + sum(xs)
-      //If multiple patterns match the target,
-      // Scala chooses the first matching case.
   }
 
   def product(ds: List[Double]): Double = ds match {
@@ -36,6 +34,8 @@ object List {
     case Cons(x,xs) => x * product(xs)
 
   }
+  
+  //TODO: implement function foldRight (see Listing 3.2)
 
   //List.apply("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z")
   def apply[A](as: A*): List[A] = {
